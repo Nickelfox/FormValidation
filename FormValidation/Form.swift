@@ -11,7 +11,7 @@ import UIKit
 
 public protocol ValidatableInput {
     var isOptional: Bool { get }
-    var text: String? { get }
+    var inputText: String? { get }
     var validator: ValidationProtocol? { get }
 }
 
@@ -26,13 +26,13 @@ public class Form  {
         var errors = [String]()
         for input in inputs {
             if input.isOptional {
-                let (valid, error) = canValidate(text: input.text, validator: input.validator)
+                let (valid, error) = canValidate(text: input.inputText, validator: input.validator)
                 if !valid, let err = error {
                     isValid = valid
                     errors.append(err)
                 }
             } else {
-                let (valid, error) = canValidate(text: input.text, validator: input.validator)
+                let (valid, error) = canValidate(text: input.inputText, validator: input.validator)
                 if !valid, let err = error {
                     isValid = valid
                     errors.append(err)

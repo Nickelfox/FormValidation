@@ -1,5 +1,5 @@
 //
-//  ValidationField.swift
+//  ValidationTextField.swift
 //  FormValidations
 //
 //  Created by Nickelfox on 31/03/17.
@@ -13,7 +13,12 @@ private var textFieldDidBegainEditingNotification = "UITextFieldTextDidBeginEdit
 private var textFieldDidChangeNotification = "UITextFieldTextDidChangeNotification"
 private var textFieldTextDidEndEditingNotification = "UITextFieldTextDidEndEditingNotification"
 
-public class ValidationField: UITextField, ValidatableInput {
+public class ValidationTextField: UITextField, ValidatableInput {
+    
+    public var inputText: String? {
+        return self.text
+    }
+    
     public var error: String?
     public var validator: ValidationProtocol?
     public var isOptional = false
@@ -29,9 +34,17 @@ public class ValidationField: UITextField, ValidatableInput {
     static let UITextFieldTextDidEndEditingNotification = Notification.Name(textFieldTextDidEndEditingNotification)
     
     func initialize() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleTextFieldDidBeginEditing) , name: ValidationField.UITextFieldTextDidBeginEditingNotification, object: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleTextFieldDidChange), name: ValidationField.UITextFieldTextDidChangeNotification, object: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleTextFieldDidEndEditing), name: ValidationField.UITextFieldTextDidEndEditingNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleTextFieldDidBeginEditing),
+                                               name: ValidationTextField.UITextFieldTextDidBeginEditingNotification,
+                                               object: self)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleTextFieldDidChange),
+                                               name: ValidationTextField.UITextFieldTextDidChangeNotification,
+                                               object: self)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleTextFieldDidEndEditing),
+                                               name: ValidationTextField.UITextFieldTextDidEndEditingNotification,
+                                               object: self)
     }
     
     deinit {

@@ -10,18 +10,24 @@
 		462BA44E1F0A291200F846D1 /* FormValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 462BA44C1F0A291200F846D1 /* FormValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		462BA4581F0A293B00F846D1 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462BA4541F0A293B00F846D1 /* Form.swift */; };
 		462BA4591F0A293B00F846D1 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462BA4551F0A293B00F846D1 /* String+Validation.swift */; };
-		462BA45A1F0A293B00F846D1 /* ValidationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462BA4561F0A293B00F846D1 /* ValidationField.swift */; };
+		462BA45A1F0A293B00F846D1 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462BA4561F0A293B00F846D1 /* ValidationTextField.swift */; };
 		462BA45B1F0A293B00F846D1 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462BA4571F0A293B00F846D1 /* Validator.swift */; };
+		462BA45D1F0A333F00F846D1 /* ValidationTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462BA45C1F0A333F00F846D1 /* ValidationTextView.swift */; };
+		7A618DC5E85CA3EF3B044A8E /* libPods-FormValidation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE856EAC4B39FC603BE8EB6 /* libPods-FormValidation.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0BE856EAC4B39FC603BE8EB6 /* libPods-FormValidation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FormValidation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		462BA4491F0A291200F846D1 /* FormValidation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormValidation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		462BA44C1F0A291200F846D1 /* FormValidation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormValidation.h; sourceTree = "<group>"; };
 		462BA44D1F0A291200F846D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		462BA4541F0A293B00F846D1 /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		462BA4551F0A293B00F846D1 /* String+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
-		462BA4561F0A293B00F846D1 /* ValidationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationField.swift; sourceTree = "<group>"; };
+		462BA4561F0A293B00F846D1 /* ValidationTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
 		462BA4571F0A293B00F846D1 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		462BA45C1F0A333F00F846D1 /* ValidationTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationTextView.swift; sourceTree = "<group>"; };
+		9573B40E6E85847220FE784D /* Pods-FormValidation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormValidation.release.xcconfig"; path = "Pods/Target Support Files/Pods-FormValidation/Pods-FormValidation.release.xcconfig"; sourceTree = "<group>"; };
+		A90760ACCF854382DD702948 /* Pods-FormValidation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormValidation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FormValidation/Pods-FormValidation.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A618DC5E85CA3EF3B044A8E /* libPods-FormValidation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04FC4FF53027B9F7E6808FD2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0BE856EAC4B39FC603BE8EB6 /* libPods-FormValidation.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		14C373F60DF546D627C20BA7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A90760ACCF854382DD702948 /* Pods-FormValidation.debug.xcconfig */,
+				9573B40E6E85847220FE784D /* Pods-FormValidation.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		462BA43F1F0A291200F846D1 = {
 			isa = PBXGroup;
 			children = (
 				462BA44B1F0A291200F846D1 /* FormValidation */,
 				462BA44A1F0A291200F846D1 /* Products */,
+				14C373F60DF546D627C20BA7 /* Pods */,
+				04FC4FF53027B9F7E6808FD2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,8 +82,9 @@
 			children = (
 				462BA4541F0A293B00F846D1 /* Form.swift */,
 				462BA4551F0A293B00F846D1 /* String+Validation.swift */,
-				462BA4561F0A293B00F846D1 /* ValidationField.swift */,
 				462BA4571F0A293B00F846D1 /* Validator.swift */,
+				462BA4561F0A293B00F846D1 /* ValidationTextField.swift */,
+				462BA45C1F0A333F00F846D1 /* ValidationTextView.swift */,
 				462BA44C1F0A291200F846D1 /* FormValidation.h */,
 				462BA44D1F0A291200F846D1 /* Info.plist */,
 			);
@@ -82,10 +109,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 462BA4511F0A291200F846D1 /* Build configuration list for PBXNativeTarget "FormValidation" */;
 			buildPhases = (
+				BE6ED5490D38323163F943D6 /* [CP] Check Pods Manifest.lock */,
 				462BA4441F0A291200F846D1 /* Sources */,
 				462BA4451F0A291200F846D1 /* Frameworks */,
 				462BA4461F0A291200F846D1 /* Headers */,
 				462BA4471F0A291200F846D1 /* Resources */,
+				38C86738B5706487D69B7C07 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -140,6 +169,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		38C86738B5706487D69B7C07 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FormValidation/Pods-FormValidation-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE6ED5490D38323163F943D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		462BA4441F0A291200F846D1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -147,7 +209,8 @@
 			files = (
 				462BA45B1F0A293B00F846D1 /* Validator.swift in Sources */,
 				462BA4581F0A293B00F846D1 /* Form.swift in Sources */,
-				462BA45A1F0A293B00F846D1 /* ValidationField.swift in Sources */,
+				462BA45A1F0A293B00F846D1 /* ValidationTextField.swift in Sources */,
+				462BA45D1F0A333F00F846D1 /* ValidationTextView.swift in Sources */,
 				462BA4591F0A293B00F846D1 /* String+Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,6 +321,7 @@
 		};
 		462BA4521F0A291200F846D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A90760ACCF854382DD702948 /* Pods-FormValidation.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -280,6 +344,7 @@
 		};
 		462BA4531F0A291200F846D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9573B40E6E85847220FE784D /* Pods-FormValidation.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
