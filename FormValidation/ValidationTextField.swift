@@ -7,89 +7,42 @@
 //
 
 import UIKit
-import QuartzCore
-
-private var textFieldDidBegainEditingNotification = "UITextFieldTextDidBeginEditingNotification"
-private var textFieldDidChangeNotification = "UITextFieldTextDidChangeNotification"
-private var textFieldTextDidEndEditingNotification = "UITextFieldTextDidEndEditingNotification"
-
-public class ValidationTextField: UITextField, ValidatableInput {
-    
-    public var inputText: String? {
-        return self.text
-    }
-    
-    public var error: String?
-    public var validator: ValidationProtocol?
-    public var isOptional = false
-    
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        initialize()
-    }
-    
-    //MARK: Notification
-    static let UITextFieldTextDidBeginEditingNotification = Notification.Name(textFieldDidBegainEditingNotification)
-    static let UITextFieldTextDidChangeNotification = Notification.Name(textFieldDidChangeNotification)
-    static let UITextFieldTextDidEndEditingNotification = Notification.Name(textFieldTextDidEndEditingNotification)
-    
-    func initialize() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleTextFieldDidBeginEditing),
-                                               name: ValidationTextField.UITextFieldTextDidBeginEditingNotification,
-                                               object: self)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleTextFieldDidChange),
-                                               name: ValidationTextField.UITextFieldTextDidChangeNotification,
-                                               object: self)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleTextFieldDidEndEditing),
-                                               name: ValidationTextField.UITextFieldTextDidEndEditingNotification,
-                                               object: self)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    public func validateField() -> (Bool, String?){
-        if validator != nil {
-            if let text = self.text {
-                return self.validator?.validate(text) ?? (true, nil)
-            }
-        }
-        return (false, nil)
-    }
-    
-    public func validateInputSilently(){
-        let (isValid, error) = validateField()
-        self.error = error
-        decorate(isValid)
-    }
-    
-    //MARK: Helper Methods
-    
-    public func decorate(_ isValid: Bool?) {
-        self.layer.borderWidth = 0.5
-        guard let isValid = isValid else { self.layer.borderColor = UIColor.clear.cgColor; return }
-        if isValid {
-            self.layer.borderColor = UIColor.green.cgColor
-        } else {
-            self.layer.borderColor = UIColor.red.cgColor
-        }
-    }
-    
-    func handleTextFieldDidBeginEditing(notification: NSNotification) {
-        self.backgroundColor = .white
-        self.decorate(nil)
-    }
-    
-    func handleTextFieldDidChange(notification: NSNotification) {
-        
-    }
-    
-    func handleTextFieldDidEndEditing(notification: NSNotification) {
-        self.backgroundColor = UIColor.lightGray
-        self.validateInputSilently()
-    }
+class ValidationTextField: UITextField, ValidatableInput {
+	var inputText: String? {
+		return self.text
+	}
+	var error: String?
+	var validator: ValidationProtocol?
+	var isOptional = false
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		self.delegate = self
+	}
+	
+	func validateField() -> (Bool, String?) {
+		guard let validator = self.validator, let text = self.text else { return (false, nil) }
+		return validator.validate(text)
+	}
+	
+	func validateSilently() {
+		let (isValid, error) = validateField()
+		self.error = error
+		decorate(isValid)
+	}
+	
+	private func decorate(_ isValid: Bool) {
+		if self.validator == nil { return }
+		self.layer.borderWidth = 0.5
+		self.layer.borderColor = isValid ? UIColor.green.cgColor : UIColor.red.cgColor
+	}
 }
 
+extension ValidationTextField: UITextFieldDelegate {
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		self.validateSilently()
+	}
+	func textFieldDidBeginEditing(_ textField: UITextField) {
+		self.layer.borderColor = UIColor.clear.cgColor
+	}
+}
