@@ -1,3 +1,7 @@
+[![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/Nickelfox/FormValidation/blob/master/LICENSE.md)
+![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
+
+
 FormValidation
 ============
 **Form Validation** validates user input of `text fields` and `text views` in obvious way.
