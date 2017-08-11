@@ -106,6 +106,7 @@ This protocol is conformed by class.
 
 All the validation type are written in this extension.
 
+```swift
     private let alphabeticRegx = "^[A-z ]+$"
      var isAlphabetic: Bool {
             if !isEmpty {
@@ -114,14 +115,17 @@ All the validation type are written in this extension.
             }
             return false
         }
+```
 
 **Validating input of individual textField/textView**
 
+```swift
     if textField.text.isAlphabetic {
-    	// 👍 Yo! input is valid
+    	// 👍 valid input
     } else {
     	// hmm! 😒 wrong input
     }
+```
 
 Example
 -----------
