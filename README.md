@@ -47,6 +47,7 @@ Usage
 The core component of FormValidator is `ValidationProtocol`.
 
 **`ValidatableInput`**
+
 This protocol comprises of three variables.
 `isOptional` of type `Bool`
 `inputText` of type `String`
