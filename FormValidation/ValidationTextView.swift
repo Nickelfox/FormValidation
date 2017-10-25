@@ -8,15 +8,15 @@
 
 import UIKit
 
-class ValidationTextView: UITextView, ValidatableInput {
-	var inputText: String? {
+public class ValidationTextView: UITextView, ValidatableInput {
+	public var inputText: String? {
 		return self.text
 	}
 	var error: String?
-	var validator: ValidationProtocol?
-	var isOptional = false
+	public var validator: ValidationProtocol?
+	public var isOptional = false
 	
-	required init?(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		self.delegate = self
 	}
@@ -40,10 +40,10 @@ class ValidationTextView: UITextView, ValidatableInput {
 }
 
 extension ValidationTextView: UITextViewDelegate {
-	func textViewDidEndEditing(_ textView: UITextView) {
+	public func textViewDidEndEditing(_ textView: UITextView) {
 		self.validateSilently()
 	}
-	func textViewDidBeginEditing(_ textView: UITextView) {
+	public func textViewDidBeginEditing(_ textView: UITextView) {
 		self.layer.borderColor = UIColor.clear.cgColor
 	}
 }

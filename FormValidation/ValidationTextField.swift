@@ -7,15 +7,15 @@
 //
 
 import UIKit
-class ValidationTextField: UITextField, ValidatableInput {
-	var inputText: String? {
+public class ValidationTextField: UITextField, ValidatableInput {
+	public var inputText: String? {
 		return self.text
 	}
 	var error: String?
-	var validator: ValidationProtocol?
-	var isOptional = false
+	public var validator: ValidationProtocol?
+	public var isOptional = false
 	
-	required init?(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		self.delegate = self
 	}
@@ -39,10 +39,10 @@ class ValidationTextField: UITextField, ValidatableInput {
 }
 
 extension ValidationTextField: UITextFieldDelegate {
-	func textFieldDidEndEditing(_ textField: UITextField) {
+	public func textFieldDidEndEditing(_ textField: UITextField) {
 		self.validateSilently()
 	}
-	func textFieldDidBeginEditing(_ textField: UITextField) {
+	public func textFieldDidBeginEditing(_ textField: UITextField) {
 		self.layer.borderColor = UIColor.clear.cgColor
 	}
 }
