@@ -49,9 +49,6 @@ public class Form  {
         return (false, nil)
     }
     
-    public func canEquatePassword(password: String, confirmPassword: String) -> Bool {
-        return password == confirmPassword
-    }
     
     //    func validate() -> (Bool, [String]) {
     //        var isValid = true
