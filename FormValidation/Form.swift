@@ -21,70 +21,36 @@ public class Form  {
     
     public var inputs: [ValidatableInput] = []
     
-    public func validate() -> (Bool, [String]) {
+    func validate() -> (Bool, [String]) {
         var isValid = true
         var errors = [String]()
         for input in inputs {
-            if input.isOptional {
-                let (valid, error) = canValidate(text: input.inputText, validator: input.validator)
-                if !valid, let err = error {
-                    isValid = valid
-                    errors.append(err)
+            
+            if !input.isOptional {
+                if let text = input.inputText, let validator = input.validator {
+                    let (valid, error) = canValidate(text: text, validator: validator)
+                    if !valid, let err = error {
+                        isValid = valid
+                        errors.append(err)
+                    }
+                } else {
+                    isValid = false
+                    errors.append("Can't validate Empty String")
                 }
             } else {
-                let (valid, error) = canValidate(text: input.inputText, validator: input.validator)
-                if !valid, let err = error {
-                    isValid = valid
-                    errors.append(err)
+                if let text = input.inputText, let validator = input.validator, text.count > 0 {
+                    let (valid, error) = canValidate(text: text, validator: validator)
+                    if !valid, let err = error {
+                        isValid = valid
+                        errors.append(err)
+                    }
                 }
             }
         }
         return (isValid, errors)
     }
-    
-    public func canValidate( text: String?, validator: ValidationProtocol?) -> (Bool, String?) {
-        if let text = text, let validator = validator {
-            return validator.validate(text)
-        }
-        return (false, nil)
+
+    func canValidate( text: String, validator: ValidationProtocol) -> (Bool, String?) {
+        return validator.validate(text)
     }
-    
-    
-    //    func validate() -> (Bool, [String]) {
-    //        var isValid = true
-    //        var errors = [String]()
-    //        for input in self.inputs {
-    //            if input.isOptional {
-    //                if let text = input.text {
-    //                    if let validator = input.validator {
-    //                        let (valid, error) = validator.validate(text)
-    //                        if !valid {
-    //                            isValid = false
-    //                            if let err = error {
-    //                                errors.append(err)
-    //                            }
-    //                        }
-    //                    }
-    //                }
-    //            } else {
-    //                if let text = input.text {
-    //                    if let validator = input.validator {
-    //                        let (valid, error) = validator.validate(text)
-    //                        if !valid {
-    //                            isValid = false
-    //                            if let err = error {
-    //                                errors.append(err)
-    //                            }
-    //                        }
-    //                    }
-    //                } else {
-    //                    isValid = false
-    //                    errors.append("Empty field")
-    //                    // Field is empty
-    //                }
-    //            }
-    //        }
-    //        return (isValid, errors)
-    //    }
-    
 }
