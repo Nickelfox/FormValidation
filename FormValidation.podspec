@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "FormValidation"
-  s.version      = "1.0.1"
+  s.version      = "1.0.3"
   s.summary      = "FormValidation"
   s.description  = "FormValidation is a form validation while submiiting signup/login info."
   s.homepage     = "https://github.com/Nickelfox/FormValidation"
