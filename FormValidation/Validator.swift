@@ -48,7 +48,7 @@ public class FullNameValidator: ValidationProtocol {
             return (false, nameRequiredError)
         }
         let name: [String] = value.components(separatedBy: " ")
-        if name.count == 2 && name[1].characters.count > 1 {
+        if name.count == 2 && name[1].count > 1 {
             return (true, nil)
         }
         return (false, fullNameError)

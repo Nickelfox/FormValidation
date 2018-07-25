@@ -7,15 +7,17 @@
 //
 
 import UIKit
-class ValidationTextField: UITextField, ValidatableInput {
-	var inputText: String? {
+
+open class ValidationTextField: UITextField, ValidatableInput {
+	public var inputText: String? {
 		return self.text
 	}
 	var error: String?
-	var validator: ValidationProtocol?
-	var isOptional = false
+	public var validator: ValidationProtocol?
+	public var isOptional = false
+    public var canDecorateBorder = true
 	
-	required init?(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		self.delegate = self
 	}
@@ -39,10 +41,14 @@ class ValidationTextField: UITextField, ValidatableInput {
 }
 
 extension ValidationTextField: UITextFieldDelegate {
-	func textFieldDidEndEditing(_ textField: UITextField) {
-		self.validateSilently()
+	public func textFieldDidEndEditing(_ textField: UITextField) {
+        if self.canDecorateBorder {
+            self.validateSilently()
+        }
 	}
-	func textFieldDidBeginEditing(_ textField: UITextField) {
-		self.layer.borderColor = UIColor.clear.cgColor
+	public func textFieldDidBeginEditing(_ textField: UITextField) {
+        if self.canDecorateBorder {
+            self.layer.borderColor = UIColor.clear.cgColor
+        }
 	}
 }
