@@ -27,7 +27,8 @@ public class Form  {
         for input in inputs {
             
             if !input.isOptional {
-                if let text = input.inputText, let validator = input.validator {
+                if let text = input.inputText?.trimmingCharacters(in: .whitespacesAndNewlines),
+                    let validator = input.validator {
                     let (valid, error) = canValidate(text: text, validator: validator)
                     if !valid, let err = error {
                         isValid = valid
@@ -38,7 +39,8 @@ public class Form  {
                     errors.append("Can't validate Empty String")
                 }
             } else {
-                if let text = input.inputText, let validator = input.validator, text.count > 0 {
+                if let text = input.inputText?.trimmingCharacters(in: .whitespacesAndNewlines),
+                    let validator = input.validator, text.count > 0 {
                     let (valid, error) = canValidate(text: text, validator: validator)
                     if !valid, let err = error {
                         isValid = valid
