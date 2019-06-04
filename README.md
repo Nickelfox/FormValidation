@@ -22,7 +22,7 @@ Installation
 
 > `$ sudo gem install cocoapods`
 
-If you wish to integrate FormValidator in your project, the make following changes in your `Podfile`:
+If you wish to integrate FormValidaton in your project, the make following changes in your `Podfile`:
 
     source 'https://github.com/Nickelfox/FormValidation.git'
     platform :ios, '9.0'
@@ -36,7 +36,7 @@ After saving `Podfile`. Run following command:
 If you don't want to use any dependency manager in your project, you can install this library manually too.
 Just add the following lines to your `Podfile`:
 
-    pod "FormValidation", :git => 'https://github.com/Nickelfox/FLUtilities.git'
+    pod "FormValidation", :git => 'https://github.com/Nickelfox/FormValidation.git'
 
 After saving Podfile, run following:
 
