@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.author       = { "Abhishek Thapliyal" => "abhishek@nickelfox.com" }
   s.platform     = :ios, "9.0"
   s.source       = { :git => "https://github.com/Nickelfox/FormValidation.git", :tag => "#{s.version}" }
-  s.source_files = "FormValidation", "FormValidation/**/*.{swift}"
+  s.source_files = 'Sources/**/*'
   s.requires_arc = true
 
 end
