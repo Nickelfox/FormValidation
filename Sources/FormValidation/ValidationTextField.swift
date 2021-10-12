@@ -6,9 +6,7 @@
 //  Copyright © 2017 Nickelfox. All rights reserved.
 //
 
-#if !os(macOS)
 import UIKit
-#endif
 
 open class ValidationTextField: UITextField, ValidatableInput {
 	public var inputText: String? {
